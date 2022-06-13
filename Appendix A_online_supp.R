@@ -147,7 +147,7 @@ Probs <- function(M_it) {
   v.p.it[M_it == "S1"] <- c(p.S1H, 1- p.S1H - p.S1S2 - p.S1D, p.S1S2, p.S1D)   # transition probabilities when sick
   v.p.it[M_it == "S2"] <- c(0, 0, 1 - p.S2D, p.S2D)                            # transition probabilities when sicker
   v.p.it[M_it == "D"]  <- c(0, 0, 0, 1)                                        # transition probabilities when dead   
-  ifelse(sum(v.p.it) == 1, return(v.p.it), print("Probabilities do not sum to 1")) # return the transition probabilities or produce an error
+  ifelse(all.equal(sum(v.p.it),1), return(v.p.it), print("Probabilities do not sum to 1")) # return the transition probabilities or produce an error
 }       
 
 
